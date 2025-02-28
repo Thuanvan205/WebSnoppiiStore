@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Về Chúng Tôi - Snoppii</title>
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #28b69e;
+            --secondary-color: #1a7a68;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+        }
+        
+        .about-header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/about/3.PNG');
+            background-size: cover;
+            background-position: center;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            height: 60px;
+            margin-right: 15px;
+        }
+
+        .social-links {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            margin-left: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .home-btn {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .home-btn:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+        
+        .story-section {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            margin-bottom: 80px;
+            position: relative;
+        }
+        
+        .timeline-content {
+            padding: 30px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 45%;
+            margin-left: auto;
+            margin-right: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+        }
+        
+        .timeline-image {
+            width: 100%;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .founder-section {
+            background: white;
+            padding: 100px 0;
+        }
+        
+        .founder-image {
+            width: 300px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .founder-image:hover {
+            transform: scale(1.05);
+        }
+        
+        .values-section {
+            padding: 100px 0;
+            background: #f9f9f9;
+        }
+        
+        .value-card {
+            text-align: center;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: 100%;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(40,182,158,0.2);
+        }
+        
+        .value-icon {
+            font-size: 46px;
+            color: var(--primary-color);
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 50px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <div class="about-header">
+        <a href="index.html" class="home-btn">
+            <i class="fas fa-home"></i>
+        </a>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100093366619463" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/snoppii_205/" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+        <div class="container">
+            <h1 class="display-4 mb-4">Câu Chuyện Về Snoppii</h1>
+            <p class="lead">"Từ ước mơ đến hiện thực - Hành trình của một Local Brand Việt Nam"</p>
+        </div>
+    </div>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <h2 class="text-center section-title">Khởi Nguồn Của Snoppii</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="lead mb-5">Snoppii được thành lập bởi Hoàng Văn Thuận - một chàng trai trẻ với niềm đam mê thời trang và khát khao xây dựng thương hiệu Việt Nam chất lượng.</p>
+                </div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <img src="images/about/2.png" alt="Thành lập Snoppii" class="timeline-image">
+                        <h4>2023 - Những Bước Đầu Tiên</h4>
+                        <p>Snoppii bắt đầu từ một ý tưởng đơn giản: tạo ra những sản phẩm thời trang chất lượng, mang đậm dấu ấn cá nhân và phù hợp với giới trẻ Việt Nam.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <img src="images/about/4.jpg" alt="Phát triển" class="timeline-image">
+                        <h4>2024 - Phát Triển & Mở Rộng</h4>
+                        <p>Từ một cửa hàng nhỏ, Snoppii đã phát triển thành một thương hiệu được yêu thích với nhiều dòng sản phẩm đa dạng và cộng đồng khách hàng trung thành.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section">
+        <div class="container">
+            <h2 class="text-center section-title">Người Sáng Lập</h2>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <img src="images/about/1.png" alt="Hoàng Văn Thuận" class="founder-image">
+                    <h3>Hoàng Văn Thuận</h3>
+                    <p class="lead">Nhà sáng lập & CEO</p>
+                    <p class="mt-4">"Tôi tin rằng thời trang không chỉ là về quần áo, mà còn là cách chúng ta thể hiện cá tính và sự tự tin của mình. Snoppii được tạo ra để giúp mọi người tìm thấy phong cách riêng của họ."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <h2 class="text-center section-title">Giá Trị Cốt Lõi</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <i class="fas fa-heart value-icon"></i>
+                        <h4>Đam Mê</h4>
+                        <p>Chúng tôi làm việc với tất cả niềm đam mê và sự sáng tạo để mang đến những sản phẩm tốt nhất.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <i class="fas fa-star value-icon"></i>
+                        <h4>Chất Lượng</h4>
+                        <p>Mỗi sản phẩm của Snoppii đều được chọn lọc kỹ lưỡng về chất liệu và quy trình sản xuất.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="value-card">
+                        <i class="fas fa-users value-icon"></i>
+                        <h4>Cộng Đồng</h4>
+                        <p>Xây dựng một cộng đồng thời trang năng động, nơi mọi người có thể chia sẻ và truyền cảm hứng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-info">
+                <h4 class="mb-4">Kết nối với chúng tôi</h4>
+                <a href="https://www.facebook.com/profile.php?id=100093366619463" target="_blank">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/snoppii_205/" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="+84363725797/" target="_blank">
+ contact: 84363725797
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+          config: {
+            bot_id: '7439449694251843592',
+          },
+          componentProps: {
+            title: 'Coze',
+          },
+        });
+    </script>
+  
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

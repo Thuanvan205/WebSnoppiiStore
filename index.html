@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snoppii</title>
+
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/logo2.png" type="image/x-icon">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+</head>
+
+<body>
+    <!-- Header with Logo and Account/Cart -->
+    <header class="Header">
+        <div class="container">
+            <div class="row py-3 align-items-center">
+                <div class="col-md-3">
+                    <form class="form-inline" action="/search" method="get">
+                        <div class="input-group">
+                            <input class="form-control search-box" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" name="query">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="/" class="navbar-brand mx-auto">
+                        <img src="images/logo3.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="login.html" class="btn btn-outline-primary"><i class="fas fa-user"></i> Tài khoản</a>
+                    <a href="cart.html" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Navigation Menu -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="productDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="productDropdown">
+                            <a href="#" class="dropdown-item" data-category="tshirt">
+                                <i class="fas fa-tshirt"></i> T SHIRT / ÁO THUN
+                            </a>
+                            <a href="#" class="dropdown-item" data-category="jacket">
+                                <i class="fas fa-vest-patches"></i> JACKET / ÁO KHOÁC
+                            </a>
+                            <a href="#" class="dropdown-item" data-category="hoodie">
+                                <i class="fas fa-vest"></i> HOODIE / SWEATER
+                            </a>
+                            <a href="#" class="dropdown-item" data-category="croptop">
+                                <i class="fas fa-tshirt"></i> ÁO CROPTOP
+                            </a>
+                            <a href="#" class="dropdown-item" data-category="balo">
+                                <i class="fas fa-shopping-bag"></i> BALO
+                            </a>
+                            <a href="#" class="dropdown-item" data-category="quan">
+                                <i class="fas fa-person-walking"></i> TROUSERS / QUẦN
+                            </a>
+                            <a href="#" class="dropdown-item" data-category="vi">
+                                <i class="fas fa-ring"></i> ACCESSORY / PHỤ KIỆN
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="refund.html" class="nav-link dropdown-toggle" id="policyDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Chính sách đổi trả
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="policyDropdown">
+                            <a href="refund.html" class="dropdown-item">Chính sách hoàn trả</a>
+                            <a href="refund.html" class="dropdown-item">Chính sách bảo hành</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="aboutDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Về Chúng Tôi
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="aboutDropdown">
+                            <a href="about.html" class="dropdown-item">Lịch Sử Hình Thành</a>
+                            <a href="https://www.facebook.com/profile.php?id=100093366619463" class="dropdown-item">Facebook</a>
+                            <a href="https://www.instagram.com/snoppii_205/" class="dropdown-item">Instagram</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <div class="container mt-4">
+        <div class="banner">
+            <img src="images/Banner/Banner1.jpg" alt="Banner" class="img-fluid">
+            <div class="banner-text">
+                <h2>BÉ CÁ NGỖ NGƯỢC - COLLECTION</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+<!-- Main Content -->
+
+<section class="collection-section container mt-5" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="section-title text-center font-weight-bold mb-4" data-aos="fade-down">
+        <span class="highlight">BỘ SƯU TẬP - BÉ CÁ NGỖ NGƯỢC</span>
+    </h2>
+
+    <div id="productCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#productCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#productCarousel" data-slide-to="1"></li>
+        </ol>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="row product-row">
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                        <a href="product-detail.html?id=55" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/c1.jpg" alt="SNP Fishy Chocker" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Fishy Chocker</h5>
+                                <div class="product-price">
+                                    <span class="current-price">90.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                        <a href="product-detail.html?id=56" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/c2.jpg" alt="SNP Fishy Leather Keychain" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Fishy Leather Keychain</h5>
+                                <div class="product-price">
+                                    <span class="current-price">75.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                        <a href="product-detail.html?id=57" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/c3.jpg" alt="SNP Fishy Pouch" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Fishy Pouch</h5>
+                                <div class="product-price">
+                                    <span class="current-price">205.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                        <a href="product-detail.html?id=58" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/c4.jpg" alt="SNP Fishy Bag" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Fishy Bag</h5>
+                                <div class="product-price">
+                                    <span class="current-price">325.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="row product-row">
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+                        <a href="product-detail.html?id=59" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/c5.jpg" alt="SNP Drawstring Tote Bag" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Drawstring Tote Bag</h5>
+                                <div class="product-price">
+                                    <span class="current-price">295.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+                        <a href="product-detail.html?id=60" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/c7.jpg" alt="SNP Binky Top" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Binky Top</h5>
+                                <div class="product-price">
+                                    <span class="current-price">185.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+                        <a href="product-detail.html?id=4" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/p4.jpg" alt="SNP Baby Tee Una" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Baby Tee Una</h5>
+                                <div class="product-price">
+                                    <span class="current-price">214.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+                        <a href="product-detail.html?id=5" class="product-card text-center">
+                            <div class="product-badge">
+                                <span class="badge badge-danger sale-badge">Sale</span>
+                            </div>
+                            <div class="product-image-wrapper">
+                                <img src="images/products/p5.jpg" alt="SNP Tee Cá Đáng Yêu" class="img-fluid">
+                                <div class="product-overlay">
+                                    <div class="overlay-content">
+                                        <button class="btn btn-quick-view">Xem nhanh</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <h5 class="product-title">SNP Tee Cá Đáng Yêu</h5>
+                                <div class="product-price">
+                                    <span class="current-price">248.000₫</span>
+                                    <span class="original-price"><del>10%</del></span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Navigation Arrows -->
+        <button class="carousel-control carousel-control-prev" type="button" data-target="#productCarousel" data-slide="prev">
+            <i class="fas fa-chevron-left"></i>
+            <span class="sr-only">Previous</span>
+        </button>
+        <button class="carousel-control carousel-control-next" type="button" data-target="#productCarousel" data-slide="next">
+            <i class="fas fa-chevron-right"></i>
+            <span class="sr-only">Next</span>
+        </button>
+    </div>
+</section>
+
+
+
+        <!-- Features Section -->
+        <section class="features-section bg-light py-5 mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 text-center" data-aos="fade-up">
+                        <i class="fas fa-truck fa-3x mb-3"></i>
+                        <h4>Miễn phí vận chuyển</h4>
+                        <p>Cho đơn hàng trên 500.000đ</p>
+                    </div>
+                    <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-undo fa-3x mb-3"></i>
+                        <h4>Đổi trả miễn phí</h4>
+                        <p>Trong vòng 7 ngày</p>
+                    </div>
+                    <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-headset fa-3x mb-3"></i>
+                        <h4>Hỗ trợ 24/7</h4>
+                        <p>Luôn sẵn sàng hỗ trợ bạn</p>
+                    </div>
+                </div>
+            </div>
+        </section>        
+    <!-- Container cho phần banner -->
+<div class="bannerimg2-container">
+    <div class="banner-image">
+        <img src="images/Banner/b1.PNG" alt="Banner 1">
+    </div>
+    <div class="banner-image">
+        <img src="images/Banner/b2.PNG" alt="Banner 2">
+    </div>
+</div>
+
+    <!-- Phần grid sản phẩm mới -->
+    <section class="product-section">
+        <div class="container">
+            <h1 class="text-center">SẢN PHẨM CỦA SNOPPII</h1>
+            
+            <div class="category-buttons">
+                <button class="category-btn active" data-category="all">TẤT CẢ</button>
+                <button class="category-btn" data-category="tshirt">T SHIRT / ÁO THUN</button>
+                <button class="category-btn" data-category="jacket">JACKET / ÁO KHOÁC</button>
+                <button class="category-btn" data-category="hoodie">HOODIE/ SWEATER</button>
+                <button class="category-btn" data-category="croptop">ÁO CROPTOP</button>
+                <button class="category-btn" data-category="balo">BALO</button>
+                <button class="category-btn" data-category="quan">QUẦN</button>
+                <button class="category-btn" data-category="vi">VÍ</button>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4 mb-4 mb-md-0">
+                        <a href="index.html"><img src="images/logo3.svg" width="90" class="logo mb-3" alt="Snoppii Logo"></a>
+                        <h4>Liên Hệ</h4>
+                        <p><strong>Địa Chỉ:</strong> thôn Cành lá, xã Cành cây, huyện Gió Mây, tỉnh Đồi Núi</p>
+                        <p><strong>Phone:</strong> (+84) 363 725 797 / (+0) 0855 472 563</p>
+                        <p><strong>Thuận:</strong> Đẹp trai quá ạ</p>
+                        <h4 class="mt-4">Theo dõi chúng tôi</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/profile.php?id=100093366619463" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="https://www.instagram.com/snoppii_205/" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-reddit"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-2 mb-4 mb-md-0">
+                        <h4>Thông Tin</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="about.html">Về chúng tôi</a></li>
+                            <li><a href="about.html">Thông tin cơ bản</a></li>
+                            <li><a href="refund.html">Điều Khoản</a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Liên Hệ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-2 mb-4 mb-md-0">
+                        <h4>Tài Khoản</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="login.html">Đăng Nhập</a></li>
+                            <li><a href="track.html">Tracking Đơn Hàng</a></li>
+                            <li><a href="cart.html">Danh sách đơn</a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Help</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <h4>Tải App Ngay</h4>
+                        <p>From App Store hoặc Google Play</p>
+                        <div class="app-download">
+                            <img src="images/footer/app.jpg" alt="App Store">
+                            <img src="images/footer/play.jpg" alt="Google Play">
+                        </div>
+                        <p class="mt-3">Cổng Thanh Toán</p>
+                        <div class="payment-methods">
+                            <img src="images/footer/pay.png" alt="Payment Methods">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row copyright">
+                    <div class="col-12 text-center">
+                        <p>Copyright © 2024 SNOPPII. Make By Snoppii aka Thuận</p>
+                    </div>
+                </div>
+            </div>
+    </footer>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const productManager = new ProductManager();
+        productManager.init(); // Thêm hàm init
+        
+        // Xử lý category buttons
+        document.querySelectorAll('.category-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                document.querySelectorAll('.category-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                productManager.displayProducts(category);
+            });
+        });
+    });
+    </script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+
+        // Back to Top Button
+        $(window).scroll(function() {
+            if ($(this).scrollTop() > 100) {
+                $('#backToTop').fadeIn();
+            } else {
+                $('#backToTop').fadeOut();
+            }
+        });
+
+        $('#backToTop').click(function() {
+            $('html, body').animate({scrollTop : 0}, 800);
+            return false;
+        });
+    </script>
+    
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+          config: {
+            bot_id: '7439449694251843592',
+          },
+          componentProps: {
+            title: 'Coze',
+          },
+        });
+    </script>
+  
+</body>
+
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách đổi trả - Snoppii</title>
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .policy-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .policy-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #28b69e;
+        }
+
+        .policy-section {
+            margin-bottom: 40px;
+        }
+
+        .policy-section h3 {
+            color: #28b69e;
+            margin-bottom: 20px;
+        }
+
+        .policy-list {
+            padding-left: 20px;
+        }
+
+        .policy-list li {
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .policy-note {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .policy-contact {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+
+        .policy-steps {
+            counter-reset: step;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .policy-steps li {
+            position: relative;
+            padding-left: 40px;
+            margin-bottom: 20px;
+        }
+
+        .policy-steps li:before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 30px;
+            height: 30px;
+            background-color: #28b69e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .policy-table {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+
+        .policy-table th,
+        .policy-table td {
+            padding: 12px;
+            border: 1px solid #dee2e6;
+        }
+
+        .policy-table th {
+            background-color: #28b69e;
+            color: white;
+        }
+
+        .policy-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="Header">
+        <div class="container">
+            <div class="row py-3 align-items-center">
+                <div class="col-md-3">
+                    <form class="form-inline" action="/search" method="get">
+                        <div class="input-group">
+                            <input class="form-control search-box" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" name="query">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="index.html" class="navbar-brand mx-auto">
+                        <img src="images/logo3.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="login.html" class="btn btn-outline-primary"><i class="fas fa-user"></i> Tài khoản</a>
+                    <a href="/cart" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="productDropdown" role="button" data-toggle="dropdown">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item"><i class="fas fa-tshirt"></i> T SHIRT / ÁO THUN</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-vest-patches"></i> JACKET / ÁO KHOÁC</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-person-walking"></i> TROUSERS / QUẦN</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-ring"></i> ACCESSORY / PHỤ KIỆN</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown active">
+                        <a href="#" class="nav-link dropdown-toggle" id="policyDropdown" role="button" data-toggle="dropdown">
+                            Chính sách đổi trả
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#return-policy" class="dropdown-item">Chính sách hoàn trả</a>
+                            <a href="#warranty-policy" class="dropdown-item">Chính sách bảo hành</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="aboutDropdown" role="button" data-toggle="dropdown">
+                            Về Chúng Tôi
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="about.html" class="dropdown-item">Lịch Sử Hình Thành</a>
+                            <a href="https://www.facebook.com/profile.php?id=100093366619463" class="dropdown-item">Facebook</a>
+                            <a href="https://www.instagram.com/snoppii_205/" class="dropdown-item">Instagram</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="policy-container">
+            <div class="policy-header">
+                <h2>Chính Sách Đổi Trả & Bảo Hành</h2>
+                <p>Cam kết mang đến trải nghiệm mua sắm tốt nhất cho khách hàng</p>
+            </div>
+
+            <!-- Chính sách đổi trả -->
+            <div class="policy-section" id="return-policy">
+                <h3>1. Chính Sách Đổi Trả</h3>
+                <div class="policy-list">
+                    <h4>1.1. Điều kiện đổi trả</h4>
+                    <ul>
+                        <li>Sản phẩm còn nguyên tem mác, chưa qua sử dụng</li>
+                        <li>Thời gian đổi trả trong vòng 7 ngày kể từ ngày nhận hàng</li>
+                        <li>Sản phẩm không bị hư hỏng, bẩn, có mùi lạ hoặc đã qua giặt ủi</li>
+                        <li>Có hóa đơn mua hàng hoặc đơn hàng online</li>
+                    </ul>
+
+                    <h4>1.2. Quy trình đổi trả</h4>
+                    <ol class="policy-steps">
+                        <li>Liên hệ với Snoppii qua hotline hoặc fanpage để được hướng dẫn</li>
+                        <li>Cung cấp thông tin đơn hàng và lý do đổi trả</li>
+                        <li>Đóng gói sản phẩm theo hướng dẫn</li>
+                        <li>Gửi sản phẩm về địa chỉ của Snoppii</li>
+                        <li>Nhận sản phẩm mới hoặc hoàn tiền trong vòng 3-5 ngày làm việc</li>
+                    </ol>
+                </div>
+
+                <div class="policy-note">
+                    <h4>Lưu ý quan trọng:</h4>
+                    <ul>
+                        <li>Khách hàng chịu phí vận chuyển khi đổi trả (trừ trường hợp lỗi từ nhà sản xuất)</li>
+                        <li>Không áp dụng đổi trả với sản phẩm mua trong chương trình khuyến mãi</li>
+                        <li>Mỗi đơn hàng chỉ được đổi trả 1 lần</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Chính sách bảo hành -->
+            <div class="policy-section" id="warranty-policy">
+                <h3>2. Chính Sách Bảo Hành</h3>
+                <div class="policy-list">
+                    <h4>2.1. Thời gian bảo hành</h4>
+                    <table class="policy-table">
+                        <thead>
+                            <tr>
+                                <th>Loại sản phẩm</th>
+                                <th>Thời gian bảo hành</th>
+                                <th>Điều kiện</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Áo thun, áo khoác</td>
+                                <td>30 ngày</td>
+                                <td>Lỗi đường may, in ấn</td>
+                            </tr>
+                            <tr>
+                                <td>Quần</td>
+                                <td>30 ngày</td>
+                                <td>Lỗi đường may, khóa kéo</td>
+                            </tr>
+                            <tr>
+                                <td>Phụ kiện</td>
+                                <td>15 ngày</td>
+                                <td>Lỗi kỹ thuật</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h4>2.2. Điều kiện bảo hành</h4>
+                    <ul>
+                        <li>Sản phẩm trong thời hạn bảo hành</li>
+                        <li>Có hóa đơn mua hàng hoặc thẻ bảo hành</li>
+                        <li>Lỗi thuộc về nhà sản xuất</li>
+                        <li>Sản phẩm chưa qua sửa chữa bởi đơn vị khác</li>
+                    </ul>
+                </div>
+
+                <div class="policy-contact">
+                    <h4>Thông tin liên hệ bảo hành:</h4>
+                    <p><strong>Hotline:</strong> (+84) 363 725 797</p>
+                    <p><strong>Email:</strong> support@snoppii.com</p>
+                    <p><strong>Địa chỉ:</strong> thôn Cành lá, xã Cành cây, huyện Gió Mây, tỉnh Đồi Núi</p>
+                    <p><strong>Thời gian làm việc:</strong> 8:00 - 22:00 (Thứ 2 - Chủ nhật)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <a href="index.html"><img src="images/logo3.svg" width="90" class="logo mb-3" alt="Snoppii Logo"></a>
+                    <h4>Liên Hệ</h4>
+                    <p><strong>Địa Chỉ:</strong> thôn Cành lá, xã Cành cây, huyện Gió Mây, tỉnh Đồi Núi</p>
+                    <p><strong>Phone:</strong> (+84) 363 725 797 / (+0) 0855 472 563</p>
+                    <p><strong>Thuận:</strong> Đẹp trai quá ạ</p>
+                    <h4 class="mt-4">Theo dõi chúng tôi</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100093366619463" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/snoppii_205/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-reddit"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h4>Thông Tin</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">Về chúng tôi</a></li>
+                        <li><a href="about.html">Thông tin cơ bản</a></li>
+                        <li><a href="refund.html">Điều Khoản</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h4>Tài Khoản</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html">Đăng Nhập</a></li>
+                        <li><a href="track.html">Tracking Đơn Hàng</a></li>
+                        <li><a href="cart.html">Danh sách đơn</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Help</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4>Tải App Ngay</h4>
+                    <p>From App Store hoặc Google Play</p>
+                    <div class="app-download">
+                        <img src="images/footer/app.jpg" alt="App Store">
+                        <img src="images/footer/play.jpg" alt="Google Play">
+                    </div>
+                    <p class="mt-3">Cổng Thanh Toán</p>
+                    <div class="payment-methods">
+                        <img src="images/footer/pay.png" alt="Payment Methods">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row copyright">
+                <div class="col-12 text-center">
+                    <p>Copyright © 2024 SNOPPII. Make By Snoppii aka Thuận</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+    <script>
+        new CozeWebSDK.WebChatClient({
+          config: {
+            bot_id: '7439449694251843592',
+          },
+          componentProps: {
+            title: 'Coze',
+          },
+        });
+    </script>
+  
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

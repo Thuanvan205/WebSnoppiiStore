@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Snoppii</title>
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cart-container {
+            padding: 40px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .cart-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .cart-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 20px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-title {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .cart-item-price {
+            font-size: 1.2rem;
+            color: #28b69e;
+            font-weight: bold;
+        }
+
+        .cart-item-size {
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            border: 1px solid #ddd;
+            background: white;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background: #f5f5f5;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        .remove-item {
+            color: #dc3545;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .remove-item:hover {
+            color: #c82333;
+        }
+
+        .cart-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            position: sticky;
+            top: 20px;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: #28b69e;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #239b86;
+            transform: translateY(-2px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .empty-cart i {
+            font-size: 4rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cart-item img {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .quantity-control {
+                justify-content: center;
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="Header">
+        <div class="container">
+            <div class="row py-3 align-items-center">
+                <div class="col-md-3">
+                    <form class="form-inline" action="/search" method="get">
+                        <div class="input-group">
+                            <input class="form-control search-box" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" name="query">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="index.html" class="navbar-brand mx-auto">
+                        <img src="images/logo3.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="login.html" class="btn btn-outline-primary"><i class="fas fa-user"></i> Tài khoản</a>
+                    <a href="cart.html" class="btn btn-outline-primary active"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Trang chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="productDropdown" role="button" data-toggle="dropdown">
+                            Sản phẩm
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item"><i class="fas fa-tshirt"></i> T SHIRT / ÁO THUN</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-vest-patches"></i> JACKET / ÁO KHOÁC</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-person-walking"></i> TROUSERS / QUẦN</a>
+                            <a href="#" class="dropdown-item"><i class="fas fa-ring"></i> ACCESSORY / PHỤ KIỆN</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="policyDropdown" role="button" data-toggle="dropdown">
+                            Chính sách đổi trả
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="refund.html" class="dropdown-item">Chính sách hoàn trả</a>
+                            <a href="refund.html" class="dropdown-item">Chính sách bảo hành</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="aboutDropdown" role="button" data-toggle="dropdown">
+                            Về Chúng Tôi
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="about.html" class="dropdown-item">Lịch Sử Hình Thành</a>
+                            <a href="https://www.facebook.com/profile.php?id=100093366619463" class="dropdown-item">Facebook</a>
+                            <a href="https://www.instagram.com/snoppii_205/" class="dropdown-item">Instagram</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container cart-container">
+        <h2 class="text-center mb-4">Giỏ hàng của bạn</h2>
+
+        <div class="row">
+            <!-- Cart Items -->
+            <div class="col-lg-8">
+                <!-- Sample Cart Items -->
+                <div class="cart-item">
+                    <img src="images/products/p1.jpg" alt="SNP Limmi Baby Tee">
+                    <div class="cart-item-details">
+                        <h5 class="cart-item-title">SNP Limmi Baby Tee</h5>
+                        <p class="cart-item-size">Kích thước: M</p>
+                        <p class="cart-item-price">230.000₫</p>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity(1, 'decrease')">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="updateQuantity(1, 'increase')">+</button>
+                        </div>
+                    </div>
+                    <div class="remove-item">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <img src="images/products/c1.jpg" alt="SNP Lace Baby Tee">
+                    <div class="cart-item-details">
+                        <h5 class="cart-item-title">SNP Lace Baby Tee</h5>
+                        <p class="cart-item-size">Kích thước: M</p>
+                        <p class="cart-item-price">90.000₫</p>
+                        <div class="quantity-control">
+                            <button class="quantity-btn" onclick="updateQuantity(2, 'decrease')">-</button>
+                            <input type="number" class="quantity-input" value="2" min="1" max="10">
+                            <button class="quantity-btn" onclick="updateQuantity(2, 'increase')">+</button>
+                        </div>
+                    </div>
+                    <div class="remove-item">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="col-lg-4">
+                <div class="cart-summary">
+                    <h4 class="mb-4">Tổng đơn hàng</h4>
+                    <div class="summary-item">
+                        <span>Tạm tính:</span>
+                        <span>410.000₫</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Phí vận chuyển:</span>
+                        <span>30.000₫</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Giảm giá:</span>
+                        <span>0₫</span>
+                    </div>
+                    <hr>
+                    <div class="summary-item">
+                        <strong>Tổng cộng:</strong>
+                        <strong class="text-primary">440.000₫</strong>
+                    </div>
+<!-- Thay thế button "Mua hàng không đăng nhập" cũ bằng đoạn code sau -->
+<button class="checkout-btn mt-3">Thanh toán</button>
+<div id="guestCheckoutSection" class="mt-4">
+    <button class="checkout-btn" onclick="toggleGuestCheckout()">Mua hàng không đăng nhập</button>
+    <div id="guestEmailForm" style="display: none;" class="mt-3">
+        <div class="form-group">
+            <label for="guestEmail">Email của bạn</label>
+            <input type="email" class="form-control" id="guestEmail" 
+                   placeholder="Nhập email để nhận thông tin đơn hàng" required>
+            <small class="form-text text-muted">
+                Chúng tôi sẽ gửi thông tin đơn hàng qua email này
+            </small>
+        </div>
+        <button class="btn btn-primary w-100" onclick="processGuestCheckout()">
+            Tiếp tục thanh toán
+        </button>
+    </div>
+</div>
+                    <div class="mt-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Nhập mã giảm giá">
+                        </div>
+                        <button class="btn btn-outline-primary w-100">Áp dụng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <a href="index.html"><img src="images/logo3.svg" width="90" class="logo mb-3" alt="Snoppii Logo"></a>
+                    <h4>Liên Hệ</h4>
+                    <p><strong>Địa Chỉ:</strong> thôn Cành lá, xã Cành cây, huyện Gió Mây, tỉnh Đồi Núi</p>
+                    <p><strong>Phone:</strong> (+84) 363 725 797 / (+0) 0855 472 563</p>
+                    <p><strong>Thuận:</strong> Đẹp trai quá ạ</p>
+                    <h4 class="mt-4">Theo dõi chúng tôi</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100093366619463" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/snoppii_205/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-reddit"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h4>Thông Tin</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">Về chúng tôi</a></li>
+                        <li><a href="about.html">Thông tin cơ bản</a></li>
+                        <li><a href="refund.html">Điều Khoản</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h4>Tài Khoản</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html">Đăng Nhập</a></li>
+                        <li><a href="track.html">Tracking Đơn Hàng</a></li>
+                        <li><a href="cart.html">Danh sách đơn</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Help</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4>Tải App Ngay</h4>
+                    <p>From App Store hoặc Google Play</p>
+                    <div class="app-download">
+                        <img src="images/footer/app.jpg" alt="App Store">
+                        <img src="images/footer/play.jpg" alt="Google Play">
+                    </div>
+                    <p class="mt-3">Cổng Thanh Toán</p>
+                    <div class="payment-methods">
+                        <img src="images/footer/pay.png" alt="Payment Methods">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row copyright">
+                <div class="col-12 text-center">
+                    <p>Copyright © 2024 SNOPPII. Make By Snoppii aka Thuận</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Hàm cập nhật số lượng sản phẩm
+        function updateQuantity(productId, action) {
+            const inputElement = event.target.parentElement.querySelector('.quantity-input');
+            let currentValue = parseInt(inputElement.value);
+            
+            if (action === 'increase' && currentValue < 10) {
+                inputElement.value = currentValue + 1;
+            } else if (action === 'decrease' && currentValue > 1) {
+                inputElement.value = currentValue - 1;
+            }
+            
+            updateTotalPrice();
+        }
+
+        // Hàm cập nhật tổng giá
+        function updateTotalPrice() {
+            // Thực hiện tính toán tổng giá dựa trên số lượng và giá của từng sản phẩm
+            // Code tính toán sẽ được thêm sau
+        }
+
+        // Xử lý sự kiện xóa sản phẩm
+        document.querySelectorAll('.remove-item').forEach(item => {
+            item.addEventListener('click', function() {
+                if (confirm('Bạn có chắc muốn xóa sản phẩm này?')) {
+                    this.closest('.cart-item').remove();
+                    updateTotalPrice();
+                }
+            });
+        });
+
+        // Xử lý sự kiện nhập số lượng trực tiếp
+        document.querySelectorAll('.quantity-input').forEach(input => {
+            input.addEventListener('change', function() {
+                let value = parseInt(this.value);
+                if (isNaN(value) || value < 1) {
+                    this.value = 1;
+                } else if (value > 10) {
+                    this.value = 10;
+                }
+                updateTotalPrice();
+            });
+        });
+
+        // Xử lý sự kiện thanh toán
+        document.querySelector('.checkout-btn').addEventListener('click', function() {
+            // Thêm code xử lý thanh toán sau
+            alert('Chức năng thanh toán đang được phát triển!');
+        });
+    </script>
+
+<script src="https://sf-cdn.coze.com/obj/unpkg-va/flow-platform/chat-app-sdk/1.0.0-beta.4/libs/oversea/index.js"></script>
+<script>
+    new CozeWebSDK.WebChatClient({
+      config: {
+        bot_id: '7439449694251843592',
+      },
+      componentProps: {
+        title: 'Coze',
+      },
+    });
+// Thêm vào phần script
+function toggleGuestCheckout() {
+    const emailForm = document.getElementById('guestEmailForm');
+    emailForm.style.display = emailForm.style.display === 'none' ? 'block' : 'none';
+}
+
+function processGuestCheckout() {
+    const emailInput = document.getElementById('guestEmail');
+    const email = emailInput.value.trim();
+    
+    // Kiểm tra email hợp lệ
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Vui lòng nhập email hợp lệ!');
+        return;
+    }
+
+    // Lưu email vào localStorage để sử dụng sau này nếu cần
+    localStorage.setItem('guestEmail', email);
+
+    // Hiển thị thông báo xác nhận
+    alert(`Đơn hàng sẽ được gửi đến email: ${email}`);
+    
+    // Ở đây bạn có thể thêm code để xử lý việc thanh toán
+    // Ví dụ: gửi request API, chuyển hướng đến trang thanh toán, v.v.
+}
+
+// Thêm validate cho input email
+document.getElementById('guestEmail')?.addEventListener('input', function(e) {
+    const email = e.target.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    
+    if (email && !emailRegex.test(email)) {
+        e.target.setCustomValidity('Vui lòng nhập email hợp lệ');
+    } else {
+        e.target.setCustomValidity('');
+    }
+});
+
+</script>
+
+</body>
+</html>

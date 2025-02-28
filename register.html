@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Snoppii</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    <style>
+        .register-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-header img {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-control {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #28b69e;
+            box-shadow: 0 0 0 0.2rem rgba(40, 182, 158, 0.25);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: #666;
+        }
+
+        .btn-register {
+            background-color: #28b69e;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-register:hover {
+            background-color: #239b86;
+        }
+
+        .social-register {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8f9fa;
+            margin: 0 10px;
+            line-height: 40px;
+            color: #333;
+            transition: all 0.3s;
+        }
+
+        .social-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .fb-btn:hover {
+            background: #3b5998;
+            color: white;
+        }
+
+        .google-btn:hover {
+            background: #db4437;
+            color: white;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: #28b69e;
+            text-decoration: none;
+        }
+
+        .login-link a:hover {
+            text-decoration: underline;
+        }
+
+        .or-divider {
+            text-align: center;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .or-divider:before,
+        .or-divider:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 45%;
+            height: 1px;
+            background: #ddd;
+        }
+
+        .or-divider:before {
+            left: 0;
+        }
+
+        .or-divider:after {
+            right: 0;
+        }
+
+        .terms {
+            font-size: 0.9rem;
+            text-align: center;
+            margin-top: 20px;
+            color: #666;
+        }
+
+        .terms a {
+            color: #28b69e;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+
+        .password-requirements {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .invalid-feedback {
+            display: none;
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="Header">
+        <div class="container">
+            <div class="row py-3 align-items-center">
+                <div class="col-md-3">
+                    <form class="form-inline" action="/search" method="get">
+                        <div class="input-group">
+                            <input class="form-control search-box" type="search" placeholder="Tìm kiếm sản phẩm..." aria-label="Search" name="query">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 text-center">
+                    <a href="/" class="navbar-brand mx-auto">
+                        <img src="images/logo3.svg" alt="Logo">
+                    </a>
+                </div>
+                <div class="col-md-3 text-right">
+                    <a href="index.html" class="btn btn-outline-primary"><i class="fas fa-user"></i> Trang chủ</a>
+                    <a href="cart.html" class="btn btn-outline-primary"><i class="fas fa-shopping-cart"></i> Giỏ hàng</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Form -->
+    <div class="container">
+        <div class="register-container">
+            <div class="register-header">
+                <img src="images/logo3.svg" alt="Snoppii Logo">
+                <h4>Tạo tài khoản mới</h4>
+            </div>
+            
+            <form id="registerForm" novalidate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="firstName" placeholder="Họ" required>
+                            <div class="invalid-feedback">
+                                Vui lòng nhập họ của bạn
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="lastName" placeholder="Tên" required>
+                            <div class="invalid-feedback">
+                                Vui lòng nhập tên của bạn
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" placeholder="Email" required>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập email hợp lệ
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" class="form-control" id="phone" placeholder="Số điện thoại" required>
+                    <div class="invalid-feedback">
+                        Vui lòng nhập số điện thoại hợp lệ
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" class="form-control" id="password" placeholder="Mật khẩu" required>
+                    <span class="password-toggle" onclick="togglePassword('password', 'toggleIcon')">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </span>
+                    <div class="password-requirements">
+                        Mật khẩu phải có ít nhất 8 ký tự, bao gồm chữ hoa, chữ thường và số
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Xác nhận mật khẩu" required>
+                    <span class="password-toggle" onclick="togglePassword('confirmPassword', 'toggleIconConfirm')">
+                        <i class="fas fa-eye" id="toggleIconConfirm"></i>
+                    </span>
+                    <div class="invalid-feedback">
+                        Mật khẩu xác nhận không khớp
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="terms" required>
+                        <label class="custom-control-label" for="terms">
+                            Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a>
+                        </label>
+                        <div class="invalid-feedback">
+                            Bạn phải đồng ý với điều khoản để tiếp tục
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-register">Đăng ký</button>
+            </form>
+            
+            <div class="or-divider">
+                <span>Hoặc</span>
+            </div>
+            
+            <div class="social-register">
+                <a href="#" class="social-btn fb-btn">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" class="social-btn google-btn">
+                    <i class="fab fa-google"></i>
+                </a>
+            </div>
+            
+            <div class="login-link">
+                Đã có tài khoản? <a href="login.html">Đăng nhập</a>
+            </div>
+
+            <div class="terms">
+                Bằng cách đăng ký, bạn đồng ý với <a href="#">Điều khoản sử dụng</a> và 
+                <a href="#">Chính sách bảo mật</a> của chúng tôi
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <a href="index.html"><img src="images/logo3.svg" width="90" class="logo mb-3" alt="Snoppii Logo"></a>
+                    <h4>Liên Hệ</h4>
+                    <p><strong>Địa Chỉ:</strong> thôn Cành lá, xã Cành cây, huyện Gió Mây, tỉnh Đồi Núi</p>
+                    <p><strong>Phone:</strong> (+84) 363 725 797 / (+0) 0855 472 563</p>
+                    <p><strong>Thuận:</strong> Đẹp trai quá ạ</p>
+                    <h4 class="mt-4">Theo dõi chúng tôi</h4>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=100093366619463" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/snoppii_205/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-reddit"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h4>Thông Tin</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="about.html">Về chúng tôi</a></li>
+                        <li><a href="about.html">Thông tin cơ bản</a></li>
+                        <li><a href="refund.html">Điều Khoản</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Liên Hệ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h4>Tài Khoản</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="login.html">Đăng Nhập</a></li>
+                        <li><a href="track.html">Tracking Đơn Hàng</a></li>
+                        <li><a href="cart.html">Danh sách đơn</a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100093366619463">Help</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-4">
+                    <h4>Tải App Ngay</h4>
+                    <p>From App Store hoặc Google Play</p>
+                    <div class="app-download">
+                        <img src="images/footer/app.jpg" alt="App Store">
+                        <img src="images/footer/play.jpg" alt="Google Play">
+                    </div>
+                    <p class="mt-3">Cổng Thanh Toán</p>
+                    <div class="payment-methods">
+                        <img src="images/footer/pay.png" alt="Payment Methods">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row copyright">
+                <div class="col-12 text-center">
+                    <p>Copyright © 2024 SNOPPII. Make By Snoppii aka Thuận</p>
+                </div>
+            </div>
+        </div>
+</footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="account.js"></script>
+</body>
+</html>
